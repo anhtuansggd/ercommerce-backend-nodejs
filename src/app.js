@@ -1,10 +1,12 @@
+//npm i dotenv --save
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require("helmet");
 const compression = require("compression");
 const app = express()
 
-
+// console.log(`Process::`, process.env)
 // init middlewares
 //Log: npm i morgan --save
 app.use(morgan("dev"))
@@ -23,7 +25,9 @@ app.use(morgan("tiny"))
 
 
 // init db
-
+require('./dbs/init.mongodb')
+const { checkOverload } = require('./helpers/check.connect')
+checkOverload()
 //init router
 app.get('/', (req, res, next) =>{
     return res.status(200).json({
