@@ -29,11 +29,7 @@ require('./dbs/init.mongodb')
 const { checkOverload } = require('./helpers/check.connect')
 checkOverload()
 //init router
-app.get('/', (req, res, next) =>{
-    return res.status(200).json({
-        message: "Hallo",
-    })
-})
+app.use('', require('./routes'))
 
 // handle errors
 
