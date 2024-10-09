@@ -5,18 +5,18 @@ const createTokenPair = async ( payload, publicKey, privateKey ) => {
     try {
         //accessToken
         const accessToken = await JWT.sign( payload, privateKey, {
-            algorithm: 'RSA256',
+            algorithm: 'RS256',
             expiresIn: '2 days'
         })
 
         const refreshToken = await JWT.sign( payload, privateKey, {
-            algorithm: 'RSA256',
+            algorithm: 'RS256',
             expiresIn: '7 days'
         })
 
         JWT.verify( accessToken, publicKey, (err, decode) => {
             if(err){
-                console.error(`error verrify::`, err)
+                console.error(`error verify::`, err)
             }else{
                 console.log(`decode verify::`, decode)
             }
@@ -24,7 +24,8 @@ const createTokenPair = async ( payload, publicKey, privateKey ) => {
 
         return {accessToken, refreshToken}
     } catch (error) {
-
+        console.log("Error in creating token pair" + error);
+        return null;
     }
 }
 

@@ -42,7 +42,7 @@ class AccessService {
                     publicKey
                 })
 
-                if(!publicKey){
+                if(!publicKeyString){
                     return {
                         code: '',
                         message: 'publicKeyString error'
