@@ -13,6 +13,10 @@ app.use(morgan("dev"))
 //Security: npm i helmet --save-dev
 app.use(helmet())
 app.use(compression())
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+}))
 
 //development
 app.use(morgan("dev"))
@@ -26,8 +30,8 @@ app.use(morgan("tiny"))
 
 // init db
 require('./dbs/init.mongodb')
-const { checkOverload } = require('./helpers/check.connect')
-checkOverload()
+// const { checkOverload } = require('./helpers/check.connect')
+// checkOverload()
 //init router
 app.use('', require('./routes'))
 

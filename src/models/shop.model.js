@@ -6,18 +6,18 @@ const DOCUMENT_NAME = 'Shop'
 const COLLECTION_NAME = 'Shops'
 
 // Declare the Schema of the Mongo model
-var shopSchema = new Schema({
-    name:{
+const shopSchema = new Schema({
+    name: {
         type:String,
         trim: true,
         maxLength: 150
     },
-    email:{
+    email: {
         type:String,
         unique:true,
         trim: true
     },
-    password:{
+    password: {
         type:String,
         required:true,
     },
@@ -40,4 +40,4 @@ var shopSchema = new Schema({
 });
 
 //Export the model
-module.exports = mongoose.model(DOCUMENT_NAME, shopSchema);
+module.exports = model(DOCUMENT_NAME, shopSchema);

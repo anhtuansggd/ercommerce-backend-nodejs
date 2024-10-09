@@ -19,12 +19,13 @@ class Database {
         }
 
         mongoose.connect(connectString, {
+            // authSource:"admin",
             maxPoolSize: 100
         }).then(_ => {
             console.log(connectString)
             console.log(`Connected database MongoDB`, countConnect())
         })
-            .catch(err => console.log(`Error connect!`))
+            .catch(err => console.log(`Error connect!`+ connectString))
     }
 
     static getInstance(){
