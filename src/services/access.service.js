@@ -16,7 +16,7 @@ const {BadRequestError} = require("../core/error.response");
 
 class AccessService {
     static signUp = async ({name, email, password}) => {
-        try {
+        // try {
             // Step 1: check email existence
             // lean return pure javascript object
             const holderShop = await shopModel.findOne({ email }).lean()
@@ -67,14 +67,14 @@ class AccessService {
                 code: 200,
                 metadata: null
             }
-        } catch (error){
-            console.error(error)
-            return {
-                code: '',
-                message: error.message,
-                status: 'error'
-            }
-        }
+        // } catch (error){
+        //     console.error(error)
+        //     return {
+        //         code: '',
+        //         message: error.message,
+        //         status: 'error'
+        //     }
+        // }
     }
 }
 
