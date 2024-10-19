@@ -12,6 +12,7 @@ const RoleShop ={
 const KeyTokenService = require("./keyToken.service")
 const {createTokenPair} = require("../auth/authUtils");
 const { getInfoData } = require("../utils")
+const {BadRequestError} = require("../core/error.response");
 
 class AccessService {
     static signUp = async ({name, email, password}) => {
@@ -20,10 +21,7 @@ class AccessService {
             // lean return pure javascript object
             const holderShop = await shopModel.findOne({ email }).lean()
             if(holderShop){
-                return {
-                    code: '',
-                    message: 'Shop already registered!'
-                }
+               throw new BadRequestError('Error: Shop already registered')
             }
 
             const passwordHash = await bcrypt.hash(password, 10)
@@ -32,19 +30,6 @@ class AccessService {
             })
 
             if(newShop){
-                //created privateKey, publicKey
-                // const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
-                //     modulusLength: 4096,
-                //     publicKeyEncoding: {
-                //         type: 'pkcs1',
-                //         format: 'pem'
-                //     },
-                //     privateKeyEncoding: {
-                //         type: 'pkcs1',
-                //         format: 'pem'
-                //     }
-                // });
-
                 //Simplified version in compared with using crypto.generatedKeyPairSync
                 const privateKey = crypto.randomBytes(64).toString('hex')
                 const publicKey = crypto.randomBytes(64).toString('hex')
