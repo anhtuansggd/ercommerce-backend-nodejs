@@ -17,32 +17,24 @@ const {findByEmail} = require("./shop.service");
 
 class AccessService {
 
-    static handlerRefreshToken = async ( refreshToken ) => {
-        // If token isn't used
-        const foundToken = await KeyTokenService.findByRefreshTokenUsed(refreshToken)
-        if(foundToken){
-            // 1. Who are you
-            const { userId, email } = await verifyJWT(refreshToken, foundToken.privateKey )
-            console.log({userId, email})
-            // 2. Delete token in KeyStore
+    static handlerRefreshToken = async ( {refreshToken, user, keyStore} ) => {
+        const {userId, email} = user;
+        if(keyStore.refreshTokenUsed.includes(refreshToken)){
             await KeyTokenService.deleteKeyById(userId)
             throw new ForbiddenError('Forbidden, please re-login')
         }
 
-        const holderToken = await KeyTokenService.findByRefreshToken(refreshToken)
-        if(!holderToken) throw new AuthFailureError('Shop not registered1')
+        if(keyStore.refreshToken !== refreshToken){
+            throw new AuthFailureError('Shop not registered')
+        }
 
-        // verify token
-        const {userId, email} = await verifyJWT(refreshToken, holderToken.privateKey)
-        console.log('[2]--', {userId, email})
-        // check userId
         const foundShop = await findByEmail({ email })
         if(!foundShop){ throw new AuthFailureError('Shop not registered2') }
 
         // create a new pair of access and private key
-        const tokens = await createTokenPair({userId, email}, holderToken.publicKey, holderToken.privateKey)
+        const tokens = await createTokenPair({userId, email}, keyStore.publicKey, keyStore.privateKey)
         // update token
-        await holderToken.updateOne({
+        await keyStore.updateOne({
             $set: {
                 refreshToken: tokens.refreshToken
             },
@@ -52,7 +44,7 @@ class AccessService {
         })
 
         return {
-            user: {userId, email},
+            user,
             tokens
         }
     }
