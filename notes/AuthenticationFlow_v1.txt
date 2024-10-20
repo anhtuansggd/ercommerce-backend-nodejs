@@ -1,0 +1,44 @@
+title Authentication Flows
+
+participant Client
+participant AccessController
+participant AccessService
+participant KeyTokenService
+participant Database
+
+note over Client,Database: Sign Up Flow
+Client->AccessController: POST /shop/signup (name, email, password)
+AccessController->AccessService: signUp(name, email, password)
+AccessService->Database: Check if email exists
+AccessService->AccessService: Hash password
+AccessService->Database: Create new shop
+AccessService->KeyTokenService: Create key pair and tokens
+KeyTokenService->Database: Store key pair and refresh token
+AccessService-->Client: Return user info and tokens
+
+note over Client,Database: Login Flow
+Client->AccessController: POST /shop/login (email, password)
+AccessController->AccessService: login(email, password)
+AccessService->Database: Find shop by email
+AccessService->AccessService: Verify password
+AccessService->KeyTokenService: Create new key pair and tokens
+KeyTokenService->Database: Update key store
+AccessService-->Client: Return user info and new tokens
+
+note over Client,Database: Authentication for Protected Routes
+Client->AccessController: Request with access token
+AccessController->AuthUtils: authentication middleware
+AuthUtils->Database: Find key store by user ID
+AuthUtils->AuthUtils: Verify token with public key
+AuthUtils-->AccessController: Allow request if token is valid
+AccessController-->Client: Handle protected route
+
+note over Client,Database: Logout Flow
+Client->AccessController: POST /shop/logout with access token
+AccessController->AuthUtils: authentication middleware
+AuthUtils->Database: Find key store by user ID
+AuthUtils->AuthUtils: Verify token with public key
+AccessController->AccessService: logout(keyStore)
+AccessService->KeyTokenService: removeKeyById(keyStore._id)
+KeyTokenService->Database: Delete key store entry
+AccessService-->Client: Logout success response
