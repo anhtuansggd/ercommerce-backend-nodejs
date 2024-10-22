@@ -1,5 +1,5 @@
 'use strict'
-const ProductService = require("../services/product.service")
+const ProductService = require("../services/product.service.xxx")
 const {CREATED, SuccessResponse} = require("../core/success.response");
 const {product} = require("../models/product.model");
 class AccessController{

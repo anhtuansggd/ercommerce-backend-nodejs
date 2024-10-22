@@ -8,15 +8,15 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzYWUzZGVl
 x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzYWUzZGVlMTQyOTM3MTI4OTdiZTMiLCJlbWFpbCI6InNob3B0aXBqczlAZ21haWwuY29tIiwiaWF0IjoxNzI5NTEzNzk5LCJleHAiOjE3MzAxMTg1OTl9.4bdp4EgSwDc9ws6d0M5ebC0tklcdFLYaqK02kdIs3rs
 
 {
-  "product_name": "Instinct",
-  "product_thumb": "product-thumb",
-  "product_description": "All rounders",
-  "product_price": 170,
+  "product_name": "Giày leo núi chuyên nghiệp Instinct Men",
+  "product_thumb": "https://us.scarpa.com/media/catalog/product/cache/839578d87078eb48b5787e3f31eca926/7/0/70036_000_1_ins_blk_instinct_black_1.jpg",
+  "product_description": "slightly asymmetrical, downturned shape, with a medium angled toe box",
+  "product_price": 180,
   "product_quantity": 50,
   "product_type": "Clothing",
   "product_attributes": {
     "brand": "Scarpa",
     "size": 40,
-    "material": "rubber"
+    "material": "Vibram"
   }
 }
