@@ -4,11 +4,11 @@ POST {{url_dev}}/product
 Content-Type: application/json
 x-api-key: 49305ed91328f36506a9444a61972687c1fbf1b458fab9f966a8f26fda38dd40a3d8daa0b0f3a8c1023fa47eed3ab8cc8a950f1b630b3ff26706e940a4f47c59
 x-client-id: 6713ae3dee14293712897be3
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzYWUzZGVlMTQyOTM3MTI4OTdiZTMiLCJlbWFpbCI6InNob3B0aXBqczlAZ21haWwuY29tIiwiaWF0IjoxNzI5NTEzNzk5LCJleHAiOjE3Mjk2ODY1OTl9.MfiogdQV-Jat_tNDdGfn6TF9HYuD732a9Zbk3Uej87Q
-x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzYWUzZGVlMTQyOTM3MTI4OTdiZTMiLCJlbWFpbCI6InNob3B0aXBqczlAZ21haWwuY29tIiwiaWF0IjoxNzI5NTEzNzk5LCJleHAiOjE3MzAxMTg1OTl9.4bdp4EgSwDc9ws6d0M5ebC0tklcdFLYaqK02kdIs3rs
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzYWUzZGVlMTQyOTM3MTI4OTdiZTMiLCJlbWFpbCI6InNob3B0aXBqczlAZ21haWwuY29tIiwiaWF0IjoxNzMwMzQ1OTY3LCJleHAiOjE3MzA1MTg3Njd9.ZSbWQf3p1Tp8MUOw6yIOPNO4WRPdQ0FDCDMF_RCRF4A
+x-rtoken-id: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzYWUzZGVlMTQyOTM3MTI4OTdiZTMiLCJlbWFpbCI6InNob3B0aXBqczlAZ21haWwuY29tIiwiaWF0IjoxNzMwMzQ1OTY3LCJleHAiOjE3MzA5NTA3Njd9.BTfOS9NVLK2Ev_mdwhe4zO0bLlWFMDuzIlZKifzByIM
 
 {
-  "product_name": "Giày leo núi chuyên nghiệp Instinct Men",
+  "product_name": "Giày leo núi chuyên nghiệp Instinct Men 2025",
   "product_thumb": "https://us.scarpa.com/media/catalog/product/cache/839578d87078eb48b5787e3f31eca926/7/0/70036_000_1_ins_blk_instinct_black_1.jpg",
   "product_description": "slightly asymmetrical, downturned shape, with a medium angled toe box",
   "product_price": 180,
