@@ -15,12 +15,12 @@ class AccessController{
 
     publishProductByShop = async( req, res, next ) => {
         new SuccessResponse({
-            message: 'Create new Product success!',
+            message: 'publishProductByShop success!',
             metadata: await ProductService.publishProductByShop({
                 product_id: req.params.id,
                 product_shop: req.user.userId
             })
-        })
+        }).send(res)
     }
 
     /**
